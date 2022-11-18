@@ -14,7 +14,7 @@ import ttps.spring.model.Categoria;
 @Service
 public class CategoriaServiceImpl implements CategoriaService{
 	
-	@Qualifier("CategoriaDAOJPA")
+	@Qualifier("categoriaDAOJPA")
 	private CategoriaDAO categoriaDAO;
 	
 	@Autowired
