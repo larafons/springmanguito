@@ -48,19 +48,20 @@ public class EmprendedorServiceImpl implements EmprendedorService {
 
 	@Override
 	public Emprendedor persistir(Emprendedor emprendedor) {
-		// TODO Auto-generated method stub
+		if (emprendedorDAO.findByUsuario(emprendedor.getUsuario()) != null) {
+			 System.out.println("Ya existe un usuario con nombre " + emprendedor.getUsuario());
+			 return new ResponseEntity<Emprendedor>(HttpStatus.CONFLICT); //Código de respuesta 409
+		}
 		return emprendedorDAO.persistir(emprendedor);
 	}
 
 	@Override
 	public Emprendedor recuperar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return emprendedorDAO.recuperar(id);
 	}
 
 	@Override
 	public List<Emprendedor> recuperarTodos(String column) {
-		// TODO Auto-generated method stub
 		List<Emprendedor> lista = emprendedorDAO.recuperarTodos(column);
 		return lista;
 	}

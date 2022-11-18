@@ -52,37 +52,25 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T>{
 
 	@Override
 	public boolean existe(Serializable id) {
-		// TODO Auto-generated method stub
+		// como implemento esto?
 		return false;
 	}
 
 	@Override
 	public T persistir(T entity) {
-		 /*EntityManager em = EMF.getEMF().createEntityManager();
-		 EntityTransaction tx = null;
-		 try {
-		 tx = em.getTransaction();
-		 tx.begin();
-		 em.persist(entity);
-		 tx.commit();
-		 }
-		 catch (RuntimeException e) {
-		 if ( tx != null && tx.isActive() ) tx.rollback();
-		 throw e; // escribir en un log o mostrar un mensaje
-		 }
-		 finally {
-		 em.close();
-		 }
-		 ESTO NO IRIA MAS? */
 		 this.getEntityManager().persist(entity);
 		 return entity;
 	}
 
 	@Override
 	public T recuperar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	 Query consulta = this.getEntityManager()
+	 .createQuery("select e from "+ getPersistentClass().
+			 getSimpleName()+" e where e.id =?");
+	 consulta.setParameter(1, id);
+	 T resultado = (T)consulta.getSingleResult();
+	 return resultado;
+	 }
 
 	@Override
 	public List<T> recuperarTodos(String column) {
