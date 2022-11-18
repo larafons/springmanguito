@@ -19,17 +19,9 @@ import ttps.spring.service.EmprendimientoService;
 @RestController
 @RequestMapping(value = "/emprendimientos", produces = MediaType.APPLICATION_JSON_VALUE)
 public class EmprendimientoRestController {
-	private EmprendimientoService emprendimientoService;
 	
 	@Autowired
-	public EmprendimientoRestController(EmprendimientoService emprendimientoService) {
-		super();
-		this.emprendimientoService = emprendimientoService;
-	}
-
-	public EmprendimientoRestController() {
-		super();
-	}
+	private EmprendimientoService emprendimientoService;
 
 	@GetMapping("/hello")
 	public ResponseEntity<String> hello() {
