@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 public class Emprendimiento {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="emprendimiento_id")
+	@Column
 	private Long id;
 	@Column
 	private String url;

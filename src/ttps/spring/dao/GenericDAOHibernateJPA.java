@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -73,9 +74,15 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 	public T recuperar(Serializable id) {
 	 Query consulta = this.getEntityManager()
 	 .createQuery("select e from "+ getPersistentClass().
-			 getSimpleName()+" e where e.id =?");
+			 getSimpleName()+" e where e.id =?1");
 	 consulta.setParameter(1, id);
-	 T resultado = (T)consulta.getSingleResult();
+	 T resultado;
+	 try {
+		 resultado = (T)consulta.getSingleResult();
+	 }
+	 catch(NoResultException e){
+		 resultado = null;
+	 }
 	 return resultado;
 	 }
 

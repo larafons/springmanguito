@@ -54,8 +54,7 @@ public class EmprendimientoServiceImpl implements EmprendimientoService {
 
 	@Override
 	public Emprendimiento recuperar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return emprendimientoDAO.recuperar(id);
 	}
 
 	@Override
