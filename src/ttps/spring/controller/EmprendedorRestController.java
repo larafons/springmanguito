@@ -25,6 +25,9 @@ public class EmprendedorRestController {
 		super();
 		this.emprendedorService = emprendedorService;
 	}
+	public EmprendedorRestController() {
+		super();
+	}
 
 
 	@GetMapping()
@@ -36,7 +39,7 @@ public class EmprendedorRestController {
 	@PostMapping
 	 public ResponseEntity<Emprendedor> createUser(@RequestBody Emprendedor emprendedor) {
 		 System.out.println("Creando el usuario" + emprendedor.getUsuario());
-		 Emprendedor emp = emprendedorService.persistir(emprendedor);
-		 return new ResponseEntity<Emprendedor>(emp, HttpStatus.CREATED);
+		 ResponseEntity<Emprendedor> emp = emprendedorService.persistir(emprendedor);
+		 return emp;
 	 }
 }

@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import ttps.spring.dao.DonacionDAO;
 import ttps.spring.model.Donacion;
 
-
+@Service
 public class DonacionServiceImpl implements DonacionService{
 
 	@Qualifier("donacionDAOJPA")
@@ -18,6 +19,9 @@ public class DonacionServiceImpl implements DonacionService{
 	@Autowired
 	public DonacionServiceImpl(DonacionDAO don) {
 		this.donacionDAO = don;
+	}
+	public DonacionServiceImpl() {
+		
 	}
 	
 	@Override

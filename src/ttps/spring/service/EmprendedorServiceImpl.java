@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -47,12 +49,12 @@ public class EmprendedorServiceImpl implements EmprendedorService {
 	}
 
 	@Override
-	public Emprendedor persistir(Emprendedor emprendedor) {
+	public ResponseEntity<Emprendedor> persistir(Emprendedor emprendedor) {
 		if (emprendedorDAO.findByUsuario(emprendedor.getUsuario()) != null) {
 			 System.out.println("Ya existe un usuario con nombre " + emprendedor.getUsuario());
 			 return new ResponseEntity<Emprendedor>(HttpStatus.CONFLICT); //Código de respuesta 409
 		}
-		return emprendedorDAO.persistir(emprendedor);
+		return new ResponseEntity<Emprendedor>(HttpStatus.CREATED);
 	}
 
 	@Override

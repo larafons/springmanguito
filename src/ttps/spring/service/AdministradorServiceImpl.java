@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import ttps.spring.dao.AdministradorDAO;
 import ttps.spring.model.Administrador;
 
-
+@Service
 public class AdministradorServiceImpl implements AdministradorService{
 	
 	@Qualifier("administradorDAOJPA")
@@ -19,6 +20,11 @@ public class AdministradorServiceImpl implements AdministradorService{
 	public AdministradorServiceImpl(AdministradorDAO ad) {
 		this.administradorDAO = ad;
 	}
+	
+	public AdministradorServiceImpl() {
+		
+	}
+	
 	
 	@Override
 	public void actualizar(Administrador entity) {

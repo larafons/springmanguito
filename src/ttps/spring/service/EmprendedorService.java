@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public interface EmprendedorService {
 
 	Emprendedor borrar(Serializable id);
 
-	Emprendedor persistir(Emprendedor entity);
+	ResponseEntity<Emprendedor> persistir(Emprendedor entity);
 
 	boolean existe(Serializable id);
 

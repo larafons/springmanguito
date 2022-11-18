@@ -22,6 +22,9 @@ public class CategoriaServiceImpl implements CategoriaService{
 		this.categoriaDAO = cat;
 	}
 	
+	public CategoriaServiceImpl() {
+	}
+	
 	@Override
 	public void actualizar(Categoria entity) {
 		// TODO Auto-generated method stub
