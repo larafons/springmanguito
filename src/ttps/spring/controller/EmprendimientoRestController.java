@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +27,26 @@ public class EmprendimientoRestController {
 		this.emprendimientoService = emprendimientoService;
 	}
 
+	public EmprendimientoRestController() {
+		super();
+	}
 
-	@GetMapping()
-	public ResponseEntity<List<Emprendimiento>> findAll() {
-		List<Emprendimiento> emprendedores = emprendimientoService.recuperarTodos("nombre");
-		return new ResponseEntity<List<Emprendimiento>>(emprendedores, HttpStatus.OK);
+	@GetMapping("/hello")
+	public ResponseEntity<String> hello() {
+		return new ResponseEntity<String>("Hello world", HttpStatus.OK);
+		
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Emprendimiento> getEmprendimientoBy(@PathVariable("id") long id) {
+		System.out.println("Obteniendo el emprendimiento con el id " + id);
+		Emprendimiento emp = emprendimientoService.recuperar(id);
+		if(emp == null) {
+			System.out.println("Emprendimiento con el id "+ id + " no encontrado");
+			return new ResponseEntity<Emprendimiento>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Emprendimiento>(emp, HttpStatus.OK);
+		
 	}
 
 	/*@PostMapping

@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import ttps.spring.dao.PosteoDAO;
 import ttps.spring.model.Posteo;
 
-
+@Service
 public class PosteoServiceImpl implements PosteoService {
 	@Qualifier("posteoDAOJPA")
 	private PosteoDAO posteoDAO;
@@ -17,6 +18,10 @@ public class PosteoServiceImpl implements PosteoService {
 	@Autowired
 	public PosteoServiceImpl(PosteoDAO pos) {
 		this.posteoDAO = pos;
+	}
+	
+	public PosteoServiceImpl() {
+		
 	}
 	
 	@Override

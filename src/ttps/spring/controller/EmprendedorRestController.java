@@ -25,6 +25,9 @@ public class EmprendedorRestController {
 		super();
 		this.emprendedorService = emprendedorService;
 	}
+	public EmprendedorRestController() {
+		super();
+	}
 
 
 	@GetMapping()
