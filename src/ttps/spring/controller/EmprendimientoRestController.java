@@ -1,6 +1,7 @@
 package ttps.spring.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
 
+import ttps.spring.model.Donacion;
 import ttps.spring.model.Emprendimiento;
 import ttps.spring.service.EmprendedorService;
 import ttps.spring.service.EmprendimientoService;
@@ -74,6 +76,14 @@ public class EmprendimientoRestController {
 	}
 	
 	@GetMapping("/{id}/donaciones")
+	public ResponseEntity<Set<Donacion>> getDonaciones(@PathVariable("id") long id){
+		Emprendimiento emp = emprendimientoService.recuperar(id);
+		Set<Donacion> lista = (Set<Donacion>) emp.getDonaciones();
+		if(lista.isEmpty()) {
+			return new ResponseEntity<Set<Donacion>>(lista,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<Set<Donacion>>(lista,HttpStatus.OK);
+	}
 
 	/*@PostMapping
 	 public ResponseEntity<Emprendedor> createUser(@RequestBody Emprendedor user) {
