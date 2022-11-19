@@ -45,8 +45,6 @@ public class EmprendimientoRestController {
 						@RequestBody Emprendimiento emprendimiento,@RequestHeader("token") String token){
 		System.out.println("Actualizando el emprendimiento con el id " + id);
 		
-		
-		
 		Emprendimiento emprendimientoActual = emprendimientoService.recuperar(id);
 		if(emprendimientoActual == null) {
 			System.out.println("El emprendimiento no existe");
@@ -74,6 +72,8 @@ public class EmprendimientoRestController {
 		emprendimientoService.actualizar(emprendimientoActual);
 		return new ResponseEntity<Emprendimiento>(emprendimientoActual, HttpStatus.OK);
 	}
+	
+	@GetMapping("/{id}/donaciones")
 
 	/*@PostMapping
 	 public ResponseEntity<Emprendedor> createUser(@RequestBody Emprendedor user) {
