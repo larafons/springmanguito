@@ -31,17 +31,17 @@ public class Emprendimiento {
 	/*@Column 
 	private Set<String> redes;
 	*/
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name="emprendimiento")
 	private Set<Posteo> posteo = new HashSet<Posteo>();
 	
-	@OneToMany (mappedBy="emprendimiento",cascade = CascadeType.ALL)
+	@OneToMany (fetch = FetchType.EAGER,mappedBy="emprendimiento",cascade = CascadeType.ALL)
 	private Set<PlanOfrecido> planesOfrecidos = new HashSet<PlanOfrecido>();
 	
-	@OneToMany (mappedBy="emprendimiento",cascade = CascadeType.ALL)
+	@OneToMany (fetch = FetchType.EAGER,mappedBy="emprendimiento",cascade = CascadeType.ALL)
 	private Set<Donacion> donaciones = new HashSet<Donacion>();
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Categoria> categorias = new HashSet<Categoria>();
 	
 	public Emprendimiento (String url, String nombre, String descripcion, 
