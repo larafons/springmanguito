@@ -19,7 +19,7 @@ public interface EmprendedorService {
 
 	Emprendedor borrar(Serializable id);
 
-	ResponseEntity<Emprendedor> persistir(Emprendedor entity);
+	Emprendedor persistir(Emprendedor entity);
 
 	boolean existe(Serializable id);
 

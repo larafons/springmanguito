@@ -49,7 +49,6 @@ public class Emprendimiento {
 		this.url = url;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.emprendedor = emprendedor;
 		
 	}
 	

@@ -49,12 +49,12 @@ public class EmprendedorServiceImpl implements EmprendedorService {
 	}
 
 	@Override
-	public ResponseEntity<Emprendedor> persistir(Emprendedor emprendedor) {
+	public Emprendedor persistir(Emprendedor emprendedor) {
 		if (emprendedorDAO.findByUsuario(emprendedor.getUsuario()) != null) {
 			 System.out.println("Ya existe un usuario con nombre " + emprendedor.getUsuario());
-			 return new ResponseEntity<Emprendedor>(HttpStatus.CONFLICT); //Código de respuesta 409
+			 return null; //Código de respuesta 409
 		}
-		return new ResponseEntity<Emprendedor>(HttpStatus.CREATED);
+		return emprendedorDAO.persistir(emprendedor);
 	}
 
 	@Override
