@@ -26,43 +26,37 @@ public class DonacionServiceImpl implements DonacionService{
 	
 	@Override
 	public void actualizar(Donacion entity) {
-		// TODO Auto-generated method stub
+		this.donacionDAO.actualizar(entity);
 		
 	}
 
 	@Override
 	public void borrar(Donacion entity) {
-		// TODO Auto-generated method stub
-		
+		this.borrar(entity);
 	}
 
 	@Override
 	public Donacion borrar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.borrar(id);
 	}
 
 	@Override
 	public boolean existe(Serializable id) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.donacionDAO.existe(id);
 	}
 
 	@Override
-	public Donacion persistir(Donacion emprendedor) {
-		// TODO Auto-generated method stub
-		return donacionDAO.persistir(emprendedor);
+	public Donacion persistir(Donacion donacion) {
+		return donacionDAO.persistir(donacion);
 	}
 
 	@Override
 	public Donacion recuperar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.donacionDAO.recuperar(id);
 	}
 
 	@Override
 	public List<Donacion> recuperarTodos(String column) {
-		// TODO Auto-generated method stub
 		List<Donacion> lista = donacionDAO.recuperarTodos(column);
 		return lista;
 	}

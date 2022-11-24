@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import ttps.spring.model.Emprendedor;
 import ttps.spring.model.Emprendimiento;
 
 public interface EmprendimientoService {

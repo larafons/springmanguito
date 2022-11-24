@@ -52,8 +52,10 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 	}
 
 	@Override
-	public boolean existe(Serializable id) {
-		// como implemento esto?
+	public boolean existe(Serializable id) {  // esto estara bien??
+		if (this.recuperar(id) != null ) {
+			return true;
+		}
 		return false;
 	}
 

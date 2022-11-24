@@ -26,6 +26,7 @@ public interface EmprendedorService {
 	List<Emprendedor> recuperarTodos(String column);
 
 	Emprendedor recuperar(Serializable id);
-	 
+	
+	Emprendedor recuperarByUser(String usuario);
 
 }

@@ -28,43 +28,36 @@ public class AdministradorServiceImpl implements AdministradorService{
 	
 	@Override
 	public void actualizar(Administrador entity) {
-		// TODO Auto-generated method stub
-		
+		administradorDAO.actualizar(entity);
 	}
 
 	@Override
 	public void borrar(Administrador entity) {
-		// TODO Auto-generated method stub
-		
+		administradorDAO.borrar(entity);
 	}
 
 	@Override
 	public Administrador borrar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return administradorDAO.borrar(id);
 	}
 
 	@Override
 	public boolean existe(Serializable id) {
-		// TODO Auto-generated method stub
-		return false;
+		return administradorDAO.existe(id);
 	}
 
 	@Override
-	public Administrador persistir(Administrador emprendedor) {
-		// TODO Auto-generated method stub
-		return administradorDAO.persistir(emprendedor);
+	public Administrador persistir(Administrador admin) {
+		return administradorDAO.persistir(admin);
 	}
 
 	@Override
 	public Administrador recuperar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return administradorDAO.recuperar(id);
 	}
 
 	@Override
 	public List<Administrador> recuperarTodos(String column) {
-		// TODO Auto-generated method stub
 		List<Administrador> lista = administradorDAO.recuperarTodos(column);
 		return lista;
 	}

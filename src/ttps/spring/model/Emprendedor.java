@@ -21,7 +21,7 @@ public class Emprendedor {
 	
 	
 	public Emprendedor() {
-		super();
+
 	}
 
 
