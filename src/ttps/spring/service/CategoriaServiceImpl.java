@@ -27,38 +27,32 @@ public class CategoriaServiceImpl implements CategoriaService{
 	
 	@Override
 	public void actualizar(Categoria entity) {
-		// TODO Auto-generated method stub
-		
+		this.categoriaDAO.actualizar(entity);
 	}
 
 	@Override
 	public void borrar(Categoria entity) {
-		// TODO Auto-generated method stub
-		
+		this.categoriaDAO.borrar(entity);
 	}
 
 	@Override
 	public Categoria borrar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.categoriaDAO.borrar(id);
 	}
 
 	@Override
 	public boolean existe(Serializable id) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.categoriaDAO.existe(id);
 	}
 
 	@Override
 	public Categoria persistir(Categoria categoria) {
-		// TODO Auto-generated method stub
 		return categoriaDAO.persistir(categoria);
 	}
 
 	@Override
 	public Categoria recuperar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.recuperar(id);
 	}
 
 	@Override

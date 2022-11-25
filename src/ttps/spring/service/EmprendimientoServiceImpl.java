@@ -47,9 +47,9 @@ public class EmprendimientoServiceImpl implements EmprendimientoService {
 	}
 
 	@Override
-	public Emprendimiento persistir(Emprendimiento emprendedor) {
+	public Emprendimiento persistir(Emprendimiento emprendimiento) {
 		// TODO Auto-generated method stub
-		return emprendimientoDAO.persistir(emprendedor);
+		return emprendimientoDAO.persistir(emprendimiento);
 	}
 
 	@Override

@@ -11,7 +11,7 @@ public class Emprendedor {
 	private String passwd;
 	@Column
 	private String usuario;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Emprendimiento emprendimiento;
 	
 	public Emprendedor(String passwd, String usuario) {
@@ -21,7 +21,7 @@ public class Emprendedor {
 	
 	
 	public Emprendedor() {
-		super();
+
 	}
 
 

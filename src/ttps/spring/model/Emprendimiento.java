@@ -46,10 +46,7 @@ public class Emprendimiento {
 	
 	public Emprendimiento (String url, String nombre, String descripcion, 
 									double precioManguito, Emprendedor emprendedor) {
-		this.url = url;
 		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.emprendedor = emprendedor;
 		
 	}
 	

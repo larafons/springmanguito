@@ -26,35 +26,31 @@ public class EmprendedorServiceImpl implements EmprendedorService {
 	
 	@Override
 	public void actualizar(Emprendedor entity) {
-		// TODO Auto-generated method stub
-		
+		this.emprendedorDAO.actualizar(entity);
 	}
 
 	@Override
 	public void borrar(Emprendedor entity) {
-		// TODO Auto-generated method stub
-		
+		this.emprendedorDAO.borrar(entity);
 	}
 
 	@Override
 	public Emprendedor borrar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.emprendedorDAO.borrar(id);
 	}
 
 	@Override
 	public boolean existe(Serializable id) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.emprendedorDAO.existe(id);
 	}
 
 	@Override
-	public ResponseEntity<Emprendedor> persistir(Emprendedor emprendedor) {
+	public Emprendedor persistir(Emprendedor emprendedor) {
 		if (emprendedorDAO.findByUsuario(emprendedor.getUsuario()) != null) {
 			 System.out.println("Ya existe un usuario con nombre " + emprendedor.getUsuario());
-			 return new ResponseEntity<Emprendedor>(HttpStatus.CONFLICT); //Código de respuesta 409
+			 return null; //Código de respuesta 409 -> en controller?
 		}
-		return new ResponseEntity<Emprendedor>(HttpStatus.CREATED);
+		return emprendedorDAO.persistir(emprendedor);
 	}
 
 	@Override
@@ -66,6 +62,15 @@ public class EmprendedorServiceImpl implements EmprendedorService {
 	public List<Emprendedor> recuperarTodos(String column) {
 		List<Emprendedor> lista = emprendedorDAO.recuperarTodos(column);
 		return lista;
+	}
+
+	@Override
+	public Emprendedor recuperarByUser(String usuario) {
+		Emprendedor emprendedor= emprendedorDAO.findByUsuario(usuario);
+		if (emprendedor != null) {
+			return emprendedor;
+		}
+		return null;
 	}
 
 }

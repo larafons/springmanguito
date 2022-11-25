@@ -19,13 +19,14 @@ public interface EmprendedorService {
 
 	Emprendedor borrar(Serializable id);
 
-	ResponseEntity<Emprendedor> persistir(Emprendedor entity);
+	Emprendedor persistir(Emprendedor entity);
 
 	boolean existe(Serializable id);
 
 	List<Emprendedor> recuperarTodos(String column);
 
 	Emprendedor recuperar(Serializable id);
-	 
+	
+	Emprendedor recuperarByUser(String usuario);
 
 }

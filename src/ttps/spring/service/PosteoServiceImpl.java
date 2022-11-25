@@ -26,43 +26,36 @@ public class PosteoServiceImpl implements PosteoService {
 	
 	@Override
 	public void actualizar(Posteo entity) {
-		// TODO Auto-generated method stub
-		
+		this.posteoDAO.actualizar(entity);
 	}
 
 	@Override
 	public void borrar(Posteo entity) {
-		// TODO Auto-generated method stub
-		
+		this.posteoDAO.borrar(entity);
 	}
 
 	@Override
 	public Posteo borrar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.posteoDAO.borrar(id);
 	}
 
 	@Override
 	public boolean existe(Serializable id) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.posteoDAO.existe(id);
 	}
 
 	@Override
 	public Posteo persistir(Posteo posteo) {
-		// TODO Auto-generated method stub
 		return posteoDAO.persistir(posteo);
 	}
 
 	@Override
 	public Posteo recuperar(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.posteoDAO.recuperar(id);
 	}
 
 	@Override
 	public List<Posteo> recuperarTodos(String column) {
-		// TODO Auto-generated method stub
 		List<Posteo> lista = posteoDAO.recuperarTodos(column);
 		return lista;
 	}
