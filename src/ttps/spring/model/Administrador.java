@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Administrador {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="administrador_id")
+	@Column
 	private Long id;
 	@Column
 	private String usuario;

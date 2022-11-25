@@ -5,7 +5,7 @@ import javax.persistence.*;
 public class Emprendedor {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="administrador_id")
+	@Column
 	private Long id;
 	@Column
 	private String passwd;

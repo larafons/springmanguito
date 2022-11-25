@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public abstract class Pago implements java.io.Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="pago_id")
+	@Column
 	private Long id;
 	@Column
 	private double precio;
