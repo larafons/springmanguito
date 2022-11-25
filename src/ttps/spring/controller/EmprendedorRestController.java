@@ -44,7 +44,6 @@ public class EmprendedorRestController {
 		 if (emp != null) {
 			 return new ResponseEntity(emp, HttpStatus.CREATED);
 		 } else {
-			 //es conflict??
 			 return new ResponseEntity(HttpStatus.CONFLICT);
 		 }
 	 }

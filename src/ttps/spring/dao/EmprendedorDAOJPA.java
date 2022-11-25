@@ -1,5 +1,6 @@
 package ttps.spring.dao;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Component;
@@ -15,9 +16,14 @@ public class EmprendedorDAOJPA extends GenericDAOHibernateJPA<Emprendedor> imple
 	}
 	
 	public Emprendedor findByUsuario(String usuario) {
-		Query consulta = this.getEntityManager().createQuery("select e from Emprendedor e where e.usuario =?");
+		Emprendedor resultado;
+		Query consulta = this.getEntityManager().createQuery("select e from Emprendedor e where e.usuario =?1");
 		consulta.setParameter(1, usuario);
-		Emprendedor resultado = (Emprendedor)consulta.getSingleResult();
+		try {
+			resultado = (Emprendedor)consulta.getSingleResult();
+		} catch (NoResultException e){
+			resultado = null;
+		}
 		return resultado;
 	}
 

@@ -52,7 +52,7 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 	}
 
 	@Override
-	public boolean existe(Serializable id) {  // esto estara bien??
+	public boolean existe(Serializable id) { 
 		if (this.recuperar(id) != null ) {
 			return true;
 		}
@@ -61,13 +61,6 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 
 	@Override
 	public T persistir(T entity) {
-		/*
-		 * EntityManager em = EMF.getEMF().createEntityManager(); EntityTransaction tx =
-		 * null; try { tx = em.getTransaction(); tx.begin(); em.persist(entity);
-		 * tx.commit(); } catch (RuntimeException e) { if ( tx != null && tx.isActive()
-		 * ) tx.rollback(); throw e; // escribir en un log o mostrar un mensaje }
-		 * finally { em.close(); } ESTO NO IRIA MAS?
-		 */
 		this.getEntityManager().persist(entity);
 		return entity;
 	}

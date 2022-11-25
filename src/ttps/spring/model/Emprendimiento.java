@@ -25,14 +25,14 @@ public class Emprendimiento {
 	private boolean visualizarDonantes;
 	@Column
 	private double precioManguito;
-	@OneToOne
+	@OneToOne(mappedBy="emprendimiento")
 	private Emprendedor emprendedor;
 	
 	/*@Column 
 	private Set<String> redes;
-	*/
+	
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinColumn(name="emprendimiento")
+	//@JoinColumn(name="emprendimiento")
 	private Set<Posteo> posteo = new HashSet<Posteo>();
 	
 	@OneToMany (fetch = FetchType.EAGER,mappedBy="emprendimiento",cascade = CascadeType.ALL)
@@ -40,7 +40,7 @@ public class Emprendimiento {
 	
 	@OneToMany (fetch = FetchType.EAGER,mappedBy="emprendimiento",cascade = CascadeType.ALL)
 	private Set<Donacion> donaciones = new HashSet<Donacion>();
-	
+	*/
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Categoria> categorias = new HashSet<Categoria>();
 	
@@ -53,7 +53,7 @@ public class Emprendimiento {
 	public Emprendimiento() {
 		
 	}
-	
+	/*
 	@Override
 	public String toString() {
 		return "Emprendimiento [id=" + id + ", url=" + url + ", nombre=" + nombre + ", descripcion=" + descripcion
@@ -61,7 +61,7 @@ public class Emprendimiento {
 				+ visualizarDonantes + ", precioManguito=" + precioManguito + ", emprendedor=" + emprendedor
 				+ ", posteo=" + posteo + ", planesOfrecidos=" + planesOfrecidos + ", donaciones=" + donaciones
 				+ ", categorias=" + categorias + "]";
-	}
+	}*/
 
 	public Long getId() {
 		return id;
@@ -142,7 +142,7 @@ public class Emprendimiento {
 	public void setRedes(Set<String> redes) {
 		this.redes = redes;
 	}
-	*/
+	
 	public Set<Posteo> getPosteo() {
 		return posteo;
 	}
@@ -166,7 +166,7 @@ public class Emprendimiento {
 	public void setDonaciones(Set<Donacion> donaciones) {
 		this.donaciones = donaciones;
 	}
-
+*/
 	public Set<Categoria> getCategorias() {
 		return categorias;
 	}
@@ -181,7 +181,7 @@ public class Emprendimiento {
 	}
 	
 	public void agregarPosteo(Posteo posteo) {
-		this.posteo.add(posteo);
+	//	this.posteo.add(posteo);
 	}
 	
 	

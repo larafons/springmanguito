@@ -29,17 +29,6 @@ public class EmprendimientoRestController {
 	@Autowired
 	private EmprendimientoService emprendimientoService;
 
-	@PostMapping
-	 public ResponseEntity<Emprendimiento> createEmprendimiento(@RequestBody Emprendimiento emprendimiento) {
-		 System.out.println("Creando el emprendimiento " + emprendimiento.getNombre());
-		 Emprendimiento emp = emprendimientoService.persistir(emprendimiento);
-		 if (emp != null) {
-			 return new ResponseEntity(emp, HttpStatus.CREATED);
-		 } else {
-			 return new ResponseEntity(HttpStatus.CONFLICT);
-		 }
-	 }
-
 	@GetMapping("/{id}")
 	public ResponseEntity<Emprendimiento> getEmprendimientoBy(@PathVariable("id") long id) {
 		System.out.println("Obteniendo el emprendimiento con el id " + id);
