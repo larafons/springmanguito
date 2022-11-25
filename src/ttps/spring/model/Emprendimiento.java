@@ -44,10 +44,10 @@ public class Emprendimiento {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Categoria> categorias = new HashSet<Categoria>();
 	
-	public Emprendimiento (String url, String nombre, String descripcion, 
-									double precioManguito, Emprendedor emprendedor) {
+	public Emprendimiento (String url, String nombre, Emprendedor emprendedor) {
 		this.nombre = nombre;
-		
+		this.url= url;
+		this.emprendedor= emprendedor;
 	}
 	
 	public Emprendimiento() {

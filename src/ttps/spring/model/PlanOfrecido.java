@@ -10,7 +10,7 @@ public class PlanOfrecido {
 		// TODO Auto-generated constructor stub
 	}
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="plan_ofrecido_id")
+	@Column
 	private Long id;
 	@Column
 	private String beneficio;

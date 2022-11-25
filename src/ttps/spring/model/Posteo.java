@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class Posteo {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="posteo_id")
+	@Column
 	private Long id;
 	@Column
 	private String foto; //ver como convertir en String

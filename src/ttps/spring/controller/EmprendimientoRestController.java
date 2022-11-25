@@ -94,15 +94,4 @@ public class EmprendimientoRestController {
 		}
 		return new ResponseEntity<Set<Donacion>>(lista,HttpStatus.OK);
 	}
-
-	/*@PostMapping
-	 public ResponseEntity<Emprendedor> createUser(@RequestBody Emprendedor user) {
-		 System.out.println("Creando el usuario" + user.getUsuario());
-		 //if (emprendedorService.isUserExist(user)) {
-		//	 System.out.println("Ya existe un usuario con nombre " + user.getUsuario());
-		//	 return new ResponseEntity<Emprendedor>(HttpStatus.CONFLICT); //Código de respuesta 409
-		 //}
-		 Emprendedor user = emprendedorService.persistir(user);
-		 return new ResponseEntity<Emprendedor>(user, HttpStatus.CREATED);
-	 }*/
 }

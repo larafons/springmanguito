@@ -85,6 +85,7 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 	 catch(NoResultException e){
 		 resultado = null;
 	 }
+	 System.out.println(resultado);
 	 return resultado;
 	 }
 
