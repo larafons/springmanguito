@@ -5,7 +5,8 @@ import javax.persistence.*;
 
 @Entity
 public class Donacion {
-	
+
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Long id;
@@ -101,6 +102,17 @@ public class Donacion {
 	public void setTelefonoDonador(String telefonoDonador) {
 		this.telefonoDonador = telefonoDonador;
 	}
+
+	@Override
+	public String toString() {
+		return "Donacion [id=" + id + ", fecha=" + fecha.toString() + ", cantManguitos=" + cantManguitos + ", emprendimiento="
+				+ emprendimiento.getNombre() + ", precio=" + precio + ", mensaje=" + mensaje + ", nombreDonador=" + nombreDonador
+				+ ", emailDonador=" + emailDonador + ", telefonoDonador=" + telefonoDonador + "]";
+	}
+	
+	
+
+	
 	
 	
 }

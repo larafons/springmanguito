@@ -50,6 +50,14 @@ public class Emprendedor {
 	public void setEmprendimiento(Emprendimiento emprendimiento) {
 		this.emprendimiento = emprendimiento;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Emprendedor [id=" + id + ", usuario=" + usuario + "]";
+	}
+	
+	
 		
 
 }

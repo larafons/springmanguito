@@ -47,6 +47,11 @@ public class PlanOfrecido {
 	public void setPlanesComprados(List<PlanComprado> planesComprados) {
 		this.planesComprados = planesComprados;
 	}
+	@Override
+	public String toString() {
+		return "PlanOfrecido [beneficio=" + beneficio + ", precio=" + precio + ", vigente=" + vigente
+				+ ", planesComprados=" + planesComprados + ", emprendimiento=" + emprendimiento + "]";
+	}
 	
 	
 }

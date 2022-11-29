@@ -15,7 +15,7 @@ public class Emprendimiento {
 	@Column
 	private Long id;
 	
-	@Column
+	@Column(unique=true)
 	private String url;
 	
 	@Column
@@ -46,10 +46,8 @@ public class Emprendimiento {
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	private Set<Posteo> posteo = new HashSet<Posteo>();
 	
-	
 	@OneToMany (fetch = FetchType.EAGER,mappedBy="emprendimiento",cascade = CascadeType.ALL)
 	private Set<PlanOfrecido> planesOfrecidos = new HashSet<PlanOfrecido>();
-
 	
 	@OneToMany (fetch = FetchType.EAGER,mappedBy="emprendimiento",cascade = CascadeType.ALL)
 	private Set<Donacion> donaciones = new HashSet<Donacion>();
@@ -147,7 +145,7 @@ public class Emprendimiento {
 	public void setEmprendedor(Emprendedor emprendedor) {
 		this.emprendedor = emprendedor;
 	}
-	
+
 	public Set<String> getRedes() {
 		return redes;
 	}
@@ -163,6 +161,14 @@ public class Emprendimiento {
 	public void setPosteo(Set<Posteo> posteo) {
 		this.posteo = posteo;
 	}
+	
+	public Set<Donacion> getDonaciones() {
+		return donaciones;
+	}
+*/
+	public void agregarDonacion(Donacion donacion) {
+		this.donaciones.add(donacion);
+	}
 
 	public Set<PlanOfrecido> getPlanesOfrecidos() {
 		return planesOfrecidos;
@@ -172,14 +178,6 @@ public class Emprendimiento {
 		this.planesOfrecidos = planesOfrecidos;
 	}
 
-	public Set<Donacion> getDonaciones() {
-		return donaciones;
-	}
-
-	public void setDonaciones(Set<Donacion> donaciones) {
-		this.donaciones = donaciones;
-	}
-*/
 	public Set<Categoria> getCategorias() {
 		return categorias;
 	}
@@ -194,7 +192,7 @@ public class Emprendimiento {
 	}
 	
 	public void agregarPosteo(Posteo posteo) {
-	//	this.posteo.add(posteo);
+		this.posteo.add(posteo);
 	}
 	
 	

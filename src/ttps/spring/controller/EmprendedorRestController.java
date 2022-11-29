@@ -56,7 +56,7 @@ public class EmprendedorRestController {
 	 }
 	
 	@PostMapping(value = "/login", consumes = {"application/json"}) 
-	public ResponseEntity<String> prueba(@RequestBody Emprendedor emprendedor) {
+	public ResponseEntity<String> prueba(@RequestBody Emprendedor emprendedor) {//recibir una clase auxiliar que reciba usuario y password
 		Emprendedor emp = this.emprendedorService.recuperarByUser(emprendedor.getUsuario());
 		if (emp != null && emp.getPasswd().equals(emprendedor.getPasswd())) {
 			return new ResponseEntity<String>("Inicio de sesion correcto", HttpStatus.OK);

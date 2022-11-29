@@ -24,8 +24,7 @@ public class EmprendimientoServiceImpl implements EmprendimientoService {
 	
 	@Override
 	public void actualizar(Emprendimiento entity) {
-		// TODO Auto-generated method stub
-		
+		emprendimientoDAO.actualizar(entity);//esto habia que implementar, alcanza?
 	}
 
 	@Override
@@ -48,7 +47,10 @@ public class EmprendimientoServiceImpl implements EmprendimientoService {
 
 	@Override
 	public Emprendimiento persistir(Emprendimiento emprendimiento) {
-		// TODO Auto-generated method stub
+		if (emprendimientoDAO.findByURL(emprendimiento.getUrl()) != null) {
+			 System.out.println("Ya existe un emprendimiento con la url" + emprendimiento.getUrl());
+			 return null; 
+		}
 		return emprendimientoDAO.persistir(emprendimiento);
 	}
 

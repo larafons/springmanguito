@@ -47,7 +47,7 @@ public class EmprendimientoRestController {
 		System.out.println("Actualizando el emprendimiento con el id " + id);
 		
 		Emprendimiento emprendimientoActual = emprendimientoService.recuperar(id);
-		if(emprendimientoActual == null) {
+		if(emprendimientoActual == null) { 
 			System.out.println("El emprendimiento no existe");
 			return new ResponseEntity<Emprendimiento>(HttpStatus.NOT_FOUND);
 		}
@@ -60,17 +60,17 @@ public class EmprendimientoRestController {
 		emprendimientoActual.setBanner(emprendimiento.getBanner());
 		emprendimientoActual.setCategorias(emprendimiento.getCategorias());
 		emprendimientoActual.setDescripcion(emprendimiento.getDescripcion());
-		emprendimientoActual.setDonaciones(emprendimiento.getDonaciones());
+		//emprendimientoActual.setDonaciones(emprendimiento.getDonaciones());
 		emprendimientoActual.setEmprendedor(emprendimiento.getEmprendedor());
 		emprendimientoActual.setNombre(emprendimiento.getNombre());
-		emprendimientoActual.setPlanesOfrecidos(emprendimiento.getPlanesOfrecidos());
-		emprendimientoActual.setPosteo(emprendimiento.getPosteo());
+		//emprendimientoActual.setPlanesOfrecidos(emprendimiento.getPlanesOfrecidos());
+		//emprendimientoActual.setPosteo(emprendimiento.getPosteo());
 		emprendimientoActual.setPrecioManguito(emprendimiento.getPrecioManguito());
 		emprendimientoActual.setUrl(emprendimiento.getUrl());
 		emprendimientoActual.setVisualizadorManguitos(emprendimiento.isVisualizadorManguitos());
-		emprendimientoActual.setVisualizarDonantes(emprendimiento.isVisualizarDonantes());
+		emprendimientoActual.setVisualizarDonantes(emprendimiento.isVisualizarDonantes());//mover al servicio todos los setters
 		
-		emprendimientoService.actualizar(emprendimientoActual);
+		emprendimientoService.actualizar(emprendimientoActual);//implementar actualizar
 		return new ResponseEntity<Emprendimiento>(emprendimientoActual, HttpStatus.OK);
 	}
 	
