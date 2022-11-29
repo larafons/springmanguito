@@ -136,7 +136,7 @@ public class Emprendimiento {
 	public void setEmprendedor(Emprendedor emprendedor) {
 		this.emprendedor = emprendedor;
 	}
-	/*
+	
 	public Set<String> getRedes() {
 		return redes;
 	}
@@ -168,7 +168,7 @@ public class Emprendimiento {
 	public void setDonaciones(Set<Donacion> donaciones) {
 		this.donaciones = donaciones;
 	}
-*/
+
 	public Set<Categoria> getCategorias() {
 		return categorias;
 	}
