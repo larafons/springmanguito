@@ -40,7 +40,7 @@ public class EmprendedorRestController {
 	@PostMapping
 	 public ResponseEntity<Emprendedor> createUser(@RequestBody Emprendedor emprendedor) {
 		 System.out.println("Creando el usuario " + emprendedor.getUsuario());
-		 //emprendedor.getEmprendimiento().setEmprendedor(emprendedor); ESTO ES LO QUE NO ANDA
+		 //emprendedor.getEmprendimiento().setEmprendedor(emprendedor); //ESTO ES LO QUE NO ANDA;
 		 Emprendedor emp = emprendedorService.persistir(emprendedor);
 		 if (emp != null) {
 			 return new ResponseEntity(emp, HttpStatus.CREATED);

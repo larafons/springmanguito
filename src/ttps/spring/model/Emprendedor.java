@@ -11,6 +11,7 @@ public class Emprendedor {
 	private String passwd;
 	@Column
 	private String usuario;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Emprendimiento emprendimiento;
 	
