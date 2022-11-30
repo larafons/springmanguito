@@ -49,5 +49,10 @@ public class Posteo {
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
-
+	@Override
+	public String toString() {
+		return "Posteo [id=" + id + ", foto=" + foto + ", texto=" + texto + ", fecha=" + fecha.toString() + "]";
+	}
+	
+	
 }

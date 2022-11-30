@@ -11,6 +11,7 @@ public class Emprendedor {
 	private String passwd;
 	@Column
 	private String usuario;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Emprendimiento emprendimiento;
 	
@@ -49,6 +50,14 @@ public class Emprendedor {
 	public void setEmprendimiento(Emprendimiento emprendimiento) {
 		this.emprendimiento = emprendimiento;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Emprendedor [id=" + id + ", usuario=" + usuario + "]";
+	}
+	
+	
 		
 
 }

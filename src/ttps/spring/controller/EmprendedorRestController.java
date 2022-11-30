@@ -40,7 +40,7 @@ public class EmprendedorRestController {
 	@PostMapping
 	 public ResponseEntity<Emprendedor> createUser(@RequestBody Emprendedor emprendedor) {
 		 System.out.println("Creando el usuario " + emprendedor.getUsuario());
-		 //emprendedor.getEmprendimiento().setEmprendedor(emprendedor); ESTO ES LO QUE NO ANDA
+		 //emprendedor.getEmprendimiento().setEmprendedor(emprendedor); //ESTO ES LO QUE NO ANDA;
 		 Emprendedor emp = emprendedorService.persistir(emprendedor);
 		 if (emp != null) {
 			 return new ResponseEntity(emp, HttpStatus.CREATED);
@@ -56,7 +56,7 @@ public class EmprendedorRestController {
 	 }
 	
 	@PostMapping(value = "/login", consumes = {"application/json"}) 
-	public ResponseEntity<String> prueba(@RequestBody Emprendedor emprendedor) {
+	public ResponseEntity<String> prueba(@RequestBody Emprendedor emprendedor) {//recibir una clase auxiliar que reciba usuario y password
 		Emprendedor emp = this.emprendedorService.recuperarByUser(emprendedor.getUsuario());
 		if (emp != null && emp.getPasswd().equals(emprendedor.getPasswd())) {
 			return new ResponseEntity<String>("Inicio de sesion correcto", HttpStatus.OK);

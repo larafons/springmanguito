@@ -50,6 +50,7 @@ public class EmprendedorServiceImpl implements EmprendedorService {
 			 System.out.println("Ya existe un usuario con nombre " + emprendedor.getUsuario());
 			 return null; //Código de respuesta 409 -> en controller?
 		}
+		//chequear si existe url de emprendimiento
 		return emprendedorDAO.persistir(emprendedor);
 	}
 
