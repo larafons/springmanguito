@@ -1,5 +1,11 @@
 package ttps.spring.model;
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Emprendedor {
@@ -14,12 +20,6 @@ public class Emprendedor {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Emprendimiento emprendimiento;
-	
-	public Emprendedor(String passwd, String usuario) {
-		this.passwd = passwd;
-		this.usuario = usuario;
-	}
-	
 	
 	public Emprendedor() {
 

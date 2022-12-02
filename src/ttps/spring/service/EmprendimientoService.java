@@ -3,12 +3,6 @@ package ttps.spring.service;
 import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
-import ttps.spring.model.Emprendedor;
 import ttps.spring.model.Emprendimiento;
 
 public interface EmprendimientoService {

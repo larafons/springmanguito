@@ -3,23 +3,21 @@ package ttps.spring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.MediaType;
 
-import ttps.spring.model.Categoria;
-import ttps.spring.model.*;
+import ttps.spring.model.Emprendedor;
+import ttps.spring.model.PlanComprado;
 import ttps.spring.service.EmprendedorService;
 
 @RestController
-@RequestMapping(value = "/emprendedores", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/emprendedores", produces = "application/json")
 public class EmprendedorRestController {
 	private EmprendedorService emprendedorService;
 	
@@ -38,25 +36,25 @@ public class EmprendedorRestController {
 		List<Emprendedor> emprendedores = emprendedorService.recuperarTodos("usuario");
 		return new ResponseEntity<List<Emprendedor>>(emprendedores, HttpStatus.OK);
 	}
+	
 
-	@PostMapping
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	 public ResponseEntity<Emprendedor> createUser(@RequestBody Emprendedor emprendedor) {
 		 System.out.println("Creando el usuario " + emprendedor.getUsuario());
 		 //emprendedor.getEmprendimiento().setEmprendedor(emprendedor); //ESTO ES LO QUE NO ANDA;
 		 Emprendedor emp = emprendedorService.persistir(emprendedor);
 		 if (emp != null) {
-			 return new ResponseEntity(emp, HttpStatus.CREATED);
+			 return new ResponseEntity<Emprendedor>(emp, HttpStatus.CREATED);
 		 } else {
-			 return new ResponseEntity(HttpStatus.CONFLICT);
+			 return new ResponseEntity<Emprendedor>(HttpStatus.CONFLICT);
 		 }
 	 }
 	
-	//@ResponseBody
-	@PostMapping(value = "/user")
+	
+	//@PostMapping(value = "/user")
 	 public ResponseEntity<String> createUserA(@RequestBody PlanComprado emprendedor) {
 		// System.out.println(emprendedor);
-		// final HttpHeaders httpHeaders= new HttpHeaders();
-		// httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+		
 		return new ResponseEntity<String>("hola", HttpStatus.OK);
 	 }
 	
@@ -66,6 +64,6 @@ public class EmprendedorRestController {
 		if (emp != null && emp.getPasswd().equals(emprendedor.getPasswd())) {
 			return new ResponseEntity<String>("Inicio de sesion correcto", HttpStatus.OK);
 		}
-		return new ResponseEntity<String>("Fallo en inicio de sesion", HttpStatus.FORBIDDEN); //seria forbidden??
+		return new ResponseEntity<String>("Fallo en inicio de sesion", HttpStatus.UNAUTHORIZED); 
 	}
 }
