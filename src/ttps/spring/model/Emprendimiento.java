@@ -153,15 +153,15 @@ public class Emprendimiento {
 	public void setRedes(Set<String> redes) {
 		this.redes = redes;
 	}
-	/*
+/*
 	public Set<Posteo> getPosteo() {
 		return posteo;
 	}
-
+*/
 	public void setPosteo(Set<Posteo> posteo) {
 		this.posteo = posteo;
 	}
-	
+	/*
 	public Set<Donacion> getDonaciones() {
 		return donaciones;
 	}
