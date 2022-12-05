@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -78,5 +79,17 @@ public class EmprendimientoRestController {
 			return new ResponseEntity<Set<Donacion>>(lista,HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<Set<Donacion>>(lista,HttpStatus.OK);
+	}
+	
+	@PostMapping("{id}/donaciones")
+	public ResponseEntity<Donacion> donar(@PathVariable("id") long id, @RequestBody Donacion donacion){
+		Donacion donacionNueva = emprendimientoService.donar(id, donacion); //implementar
+		Emprendimiento emp = emprendimientoService.recuperar(id); // poner en el servicio
+		if (emp == null) return null; // poner en el servicio
+		donacion.setEmprendimiento(emp); // poner en el servicio
+		if(donacionNueva == null) {
+			return new ResponseEntity<Donacion>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Donacion>(donacionNueva, HttpStatus.OK);
 	}
 }
