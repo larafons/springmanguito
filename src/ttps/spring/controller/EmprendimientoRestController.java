@@ -1,10 +1,10 @@
 package ttps.spring.controller;
 
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,12 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.MediaType;
 
 import ttps.spring.model.Donacion;
-import ttps.spring.model.Emprendedor;
 import ttps.spring.model.Emprendimiento;
-import ttps.spring.service.EmprendedorService;
 import ttps.spring.service.EmprendimientoService;
 
 @RestController
@@ -29,6 +26,7 @@ public class EmprendimientoRestController {
 	@Autowired
 	private EmprendimientoService emprendimientoService;
 
+	//Obtención de datos del emprendimiento
 	@GetMapping("/{id}")
 	public ResponseEntity<Emprendimiento> getEmprendimientoBy(@PathVariable("id") long id) {
 		System.out.println("Obteniendo el emprendimiento con el id " + id);
@@ -41,6 +39,7 @@ public class EmprendimientoRestController {
 		
 	}
 	
+	//Actualización de datos del emprendimiento
 	@PutMapping("/{id}")
 	public ResponseEntity<Emprendimiento> updateEmprendimiento(@PathVariable("id") long id,
 						@RequestBody Emprendimiento emprendimiento,@RequestHeader("token") String token){
@@ -60,11 +59,11 @@ public class EmprendimientoRestController {
 		emprendimientoActual.setBanner(emprendimiento.getBanner());
 		emprendimientoActual.setCategorias(emprendimiento.getCategorias());
 		emprendimientoActual.setDescripcion(emprendimiento.getDescripcion());
-		//emprendimientoActual.setDonaciones(emprendimiento.getDonaciones());
+		emprendimientoActual.setDonaciones(emprendimiento.getDonaciones());
 		emprendimientoActual.setEmprendedor(emprendimiento.getEmprendedor());
 		emprendimientoActual.setNombre(emprendimiento.getNombre());
-		//emprendimientoActual.setPlanesOfrecidos(emprendimiento.getPlanesOfrecidos());
-		//emprendimientoActual.setPosteo(emprendimiento.getPosteo());
+		emprendimientoActual.setPlanesOfrecidos(emprendimiento.getPlanesOfrecidos());
+		emprendimientoActual.setPosteo(emprendimiento.getPosteo());
 		emprendimientoActual.setPrecioManguito(emprendimiento.getPrecioManguito());
 		emprendimientoActual.setUrl(emprendimiento.getUrl());
 		emprendimientoActual.setVisualizadorManguitos(emprendimiento.isVisualizadorManguitos());
@@ -74,6 +73,7 @@ public class EmprendimientoRestController {
 		return new ResponseEntity<Emprendimiento>(emprendimientoActual, HttpStatus.OK);
 	}
 	
+	//Listado de todas las donaciones recibidas para un emprendimiento
 	@GetMapping("/{id}/donaciones")
 	public ResponseEntity<Set<Donacion>> getDonaciones(@PathVariable("id") long id){
 		Emprendimiento emp = emprendimientoService.recuperar(id);
@@ -82,5 +82,16 @@ public class EmprendimientoRestController {
 			return new ResponseEntity<Set<Donacion>>(lista,HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<Set<Donacion>>(lista,HttpStatus.OK);
+	}
+	
+	//Donación en manguitos a un emprendimiento en particular
+	@PostMapping("{id}/donaciones")
+	public ResponseEntity<Donacion> donar(@PathVariable("id") long id, @RequestBody Donacion donacion){
+		Donacion donacionNueva = new Donacion();
+		donacionNueva= emprendimientoService.donar(id, donacion);
+		if(donacionNueva == null) {
+			return new ResponseEntity<Donacion>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Donacion>(donacionNueva, HttpStatus.OK);
 	}
 }

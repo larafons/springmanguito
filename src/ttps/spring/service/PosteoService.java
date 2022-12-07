@@ -3,7 +3,6 @@ package ttps.spring.service;
 import java.io.Serializable;
 import java.util.List;
 
-
 import ttps.spring.model.Posteo;
 
 public interface PosteoService {

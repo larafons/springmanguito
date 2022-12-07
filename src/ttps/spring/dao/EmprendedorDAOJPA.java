@@ -3,7 +3,6 @@ package ttps.spring.dao;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import ttps.spring.model.Emprendedor;

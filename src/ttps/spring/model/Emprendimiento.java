@@ -1,13 +1,20 @@
 package ttps.spring.model;
-import java.awt.Image;
-import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Emprendimiento {
@@ -15,7 +22,7 @@ public class Emprendimiento {
 	@Column
 	private Long id;
 	
-	@Column(unique=true)
+	@Column
 	private String url;
 	
 	@Column
@@ -50,16 +57,12 @@ public class Emprendimiento {
 	private Set<PlanOfrecido> planesOfrecidos = new HashSet<PlanOfrecido>();
 	
 	@OneToMany (fetch = FetchType.EAGER,mappedBy="emprendimiento",cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<Donacion> donaciones = new HashSet<Donacion>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Categoria> categorias = new HashSet<Categoria>();
-	
-	public Emprendimiento (String url, String nombre, Emprendedor emprendedor) {
-		this.nombre = nombre;
-		this.url= url;
-		this.emprendedor= emprendedor;
-	}
+
 	
 	public Emprendimiento() {
 		
@@ -88,6 +91,10 @@ public class Emprendimiento {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public void setDonaciones(Set<Donacion> donaciones) {
+		this.donaciones = donaciones;
 	}
 
 	public String getNombre() {
@@ -153,7 +160,7 @@ public class Emprendimiento {
 	public void setRedes(Set<String> redes) {
 		this.redes = redes;
 	}
-	/*
+ 
 	public Set<Posteo> getPosteo() {
 		return posteo;
 	}
@@ -165,7 +172,7 @@ public class Emprendimiento {
 	public Set<Donacion> getDonaciones() {
 		return donaciones;
 	}
-*/
+
 	public void agregarDonacion(Donacion donacion) {
 		this.donaciones.add(donacion);
 	}
