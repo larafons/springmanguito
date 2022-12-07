@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -27,6 +28,7 @@ public class Donacion {
 	@Column
 	private int cantManguitos;
 	@OneToOne
+	@JsonIgnore
 	private Emprendimiento emprendimiento;
 	@Column
 	private double precio;

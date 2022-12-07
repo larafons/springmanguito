@@ -57,6 +57,7 @@ public class Emprendimiento {
 	private Set<PlanOfrecido> planesOfrecidos = new HashSet<PlanOfrecido>();
 	
 	@OneToMany (fetch = FetchType.EAGER,mappedBy="emprendimiento",cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<Donacion> donaciones = new HashSet<Donacion>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
