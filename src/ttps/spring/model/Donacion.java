@@ -1,12 +1,17 @@
 package ttps.spring.model;
 import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+
 
 @Entity
 public class Donacion {
@@ -16,6 +21,8 @@ public class Donacion {
 	@Column
 	private Long id;
 	@Column
+	@JsonSerialize(using = ToStringSerializer.class)
+	@JsonDeserialize(using = LocalDateDeserializer.class)
 	private LocalDate fecha;
 	@Column
 	private int cantManguitos;
