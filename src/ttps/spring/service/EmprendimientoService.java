@@ -22,6 +22,6 @@ public interface EmprendimientoService {
 
 	Emprendimiento recuperar(Serializable id);
 	 
-	Donacion donar(Long id, Donacion donacion); // setear campos que no vienen en el parametro, por ejemplo: fecha (pedirle a java), precio del manguito (tomarlo el emprendimiento)
+	Donacion donar(Long id, Donacion donacion); 
 
 }

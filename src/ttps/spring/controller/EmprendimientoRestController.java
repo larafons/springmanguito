@@ -26,6 +26,7 @@ public class EmprendimientoRestController {
 	@Autowired
 	private EmprendimientoService emprendimientoService;
 
+	//Obtención de datos del emprendimiento
 	@GetMapping("/{id}")
 	public ResponseEntity<Emprendimiento> getEmprendimientoBy(@PathVariable("id") long id) {
 		System.out.println("Obteniendo el emprendimiento con el id " + id);
@@ -38,6 +39,7 @@ public class EmprendimientoRestController {
 		
 	}
 	
+	//Actualización de datos del emprendimiento
 	@PutMapping("/{id}")
 	public ResponseEntity<Emprendimiento> updateEmprendimiento(@PathVariable("id") long id,
 						@RequestBody Emprendimiento emprendimiento,@RequestHeader("token") String token){
@@ -71,6 +73,7 @@ public class EmprendimientoRestController {
 		return new ResponseEntity<Emprendimiento>(emprendimientoActual, HttpStatus.OK);
 	}
 	
+	//Listado de todas las donaciones recibidas para un emprendimiento
 	@GetMapping("/{id}/donaciones")
 	public ResponseEntity<Set<Donacion>> getDonaciones(@PathVariable("id") long id){
 		Emprendimiento emp = emprendimientoService.recuperar(id);
@@ -81,12 +84,11 @@ public class EmprendimientoRestController {
 		return new ResponseEntity<Set<Donacion>>(lista,HttpStatus.OK);
 	}
 	
+	//Donación en manguitos a un emprendimiento en particular
 	@PostMapping("{id}/donaciones")
 	public ResponseEntity<Donacion> donar(@PathVariable("id") long id, @RequestBody Donacion donacion){
-		Donacion donacionNueva = emprendimientoService.donar(id, donacion); //implementar
-		Emprendimiento emp = emprendimientoService.recuperar(id); // poner en el servicio
-		if (emp == null) return null; // poner en el servicio
-		donacion.setEmprendimiento(emp); // poner en el servicio
+		Donacion donacionNueva = new Donacion();
+		donacionNueva= emprendimientoService.donar(id, donacion);
 		if(donacionNueva == null) {
 			return new ResponseEntity<Donacion>(HttpStatus.NOT_FOUND);
 		}

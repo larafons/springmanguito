@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ttps.spring.model.Emprendedor;
 import ttps.spring.model.PlanComprado;
+import ttps.spring.model.Usuario;
 import ttps.spring.service.EmprendedorService;
 
 @RestController
@@ -37,7 +38,7 @@ public class EmprendedorRestController {
 		return new ResponseEntity<List<Emprendedor>>(emprendedores, HttpStatus.OK);
 	}
 	
-
+	//Registración de usuario/emprendimiento nuevo
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	 public ResponseEntity<Emprendedor> createUser(@RequestBody Emprendedor emprendedor) {
 		 System.out.println("Creando el usuario " + emprendedor.getUsuario());
@@ -50,19 +51,12 @@ public class EmprendedorRestController {
 		 }
 	 }
 	
-	
-	//@PostMapping(value = "/user")
-	 public ResponseEntity<String> createUserA(@RequestBody PlanComprado emprendedor) {
-		// System.out.println(emprendedor);
-		
-		return new ResponseEntity<String>("hola", HttpStatus.OK);
-	 }
-	
+	//Login del sistema
 	@PostMapping(value = "/login", consumes = {"application/json"}) 
-	public ResponseEntity<String> prueba(@RequestBody Emprendedor emprendedor) {//recibir una clase auxiliar que reciba usuario y password
-		Emprendedor emp = this.emprendedorService.recuperarByUser(emprendedor.getUsuario());
-		if (emp != null && emp.getPasswd().equals(emprendedor.getPasswd())) {
-			return new ResponseEntity<String>("Inicio de sesion correcto", HttpStatus.OK);
+	public ResponseEntity<String> login(@RequestBody Usuario usuario) {
+		Emprendedor emp = this.emprendedorService.recuperarByUser(usuario.getUsuario());
+		if (emp != null && emp.getPasswd().equals(usuario.getPasswd())) {
+			return new ResponseEntity<String>("Inicio de sesion correcto :)", HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("Fallo en inicio de sesion", HttpStatus.UNAUTHORIZED); 
 	}
