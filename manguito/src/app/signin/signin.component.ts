@@ -7,13 +7,14 @@ import { UsersService } from '../users.service';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent {
-  email: string;
+  user: string;
   password: string;
+  confirmPassword:string;
 
   constructor(public userService: UsersService) { }
 
   login() {
-    const user = { email: this.email, password: this.password };
+    const user = { email: this.user, password: this.password };
     this.userService.login(user).subscribe(data => {
       console.log(data);
     });

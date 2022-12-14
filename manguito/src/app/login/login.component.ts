@@ -9,9 +9,9 @@ import { UsersService } from '../users.service';
 export class LoginComponent {
   user: string;
   password: string;
-  userService: UsersService;
+  
 
-  constructor() { }
+  constructor(public userService: UsersService) { }
 
   login() {
     console.log(this.user);

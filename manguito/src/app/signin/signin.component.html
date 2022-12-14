@@ -1,1 +1,9 @@
-<p>signin works!</p>
+<div class="register">
+    <form class="custom-form" method="post">
+        <h1>Registrarse</h1>
+        <input type="text" [(ngModel)]="user" name="user" placeholder="Usuario" required="required" />
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required="required" />
+        <input type="password" [(ngModel)]="confirmPassword" name="password" placeholder="Repita contraseña" required="required" />
+        <button type="submit" (click)="login()">Registrarse</button>
+    </form>
+</div>
