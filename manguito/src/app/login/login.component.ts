@@ -7,13 +7,16 @@ import { UsersService } from '../users.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string;
+  user: string;
   password: string;
+  userService: UsersService;
 
-  constructor(public userService: UsersService) { }
+  constructor() { }
 
   login() {
-    const user = { email: this.email, password: this.password };
+    console.log(this.user);
+    console.log(this.password);
+    const user = { email: this.user, password: this.password };
     this.userService.login(user).subscribe(data => {
       console.log(data);
     });

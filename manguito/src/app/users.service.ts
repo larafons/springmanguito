@@ -10,10 +10,10 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  login(user: Object): Observable<Object> {
+  login(user: any): Observable<any> {
     return this.http.post("http://localhost:8080/ttps-spring/emprendedores/login", user);
   }
-  signin(user: Object): Observable<Object> {
+  signin(user: any): Observable<any> {
     return this.http.post("http://localhost:8080/ttps-spring/emprendedores", user);
   }
 
