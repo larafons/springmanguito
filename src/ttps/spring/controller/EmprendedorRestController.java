@@ -58,7 +58,7 @@ public class EmprendedorRestController {
 	@PostMapping(value = "/login", consumes = {"application/json"}) 
 	public ResponseEntity<String> login(@RequestBody Usuario usuario) {
 		Emprendedor emp = this.emprendedorService.recuperarByUser(usuario.getUsuario());
-		if (emp != null && emp.getPasswd().equals(usuario.getPasswd())) {
+		if (emp != null && emp.getPasswd().equals(usuario.getPassword())) {
 			return new ResponseEntity<String>("Inicio de sesion correcto :)", HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("Fallo en inicio de sesion", HttpStatus.UNAUTHORIZED); 

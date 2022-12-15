@@ -2,12 +2,12 @@ package ttps.spring.model;
 
 public class Usuario {
 	private String usuario;
-	private String passwd;
+	private String password;
 	
 	public Usuario(String user, String password) {
 		super();
 		this.usuario = user;
-		this.passwd = password;
+		this.password = password;
 	}
 
 	public Usuario () {
@@ -22,11 +22,11 @@ public class Usuario {
 		this.usuario = usuario;
 	}
 
-	public String getPasswd() {
-		return passwd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setPassword(String passwd) {
+		this.password = passwd;
 	}
 }
