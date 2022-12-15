@@ -1,0 +1,21 @@
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+        <img src="assets/126230.png" id="icon" alt="User Icon" />
+        <h3 style="padding-bottom: 5px;">Manguito</h3>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]= "loginForm" (ngSubmit)="onLogin(loginForm.value)">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario" formControlName="usuario">
+      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña" formControlName="password">
+      <input type="submit" class="fadeIn fourth" value="Iniciar sesion">
+    </form>
+
+  </div>
+</div>
