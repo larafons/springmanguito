@@ -2,6 +2,8 @@
 import { Injectable } from '@angular/core';
 import { LoginI } from '../../modelos/login.interface'
 import { ResponseI } from '../../modelos/response.interface'
+import { ListaEmprendimientosI } from '../../modelos/listaemprendimientos.interface'
+import { ListaCategoriasI } from '../../modelos/listacategorias.interface'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 
@@ -17,5 +19,20 @@ export class ApiService {
   loginByUser(form: LoginI):Observable<ResponseI> {
     let direccion = this.url+"emprendedores/login"
     return this.http.post<ResponseI>(direccion, form);
+  }
+
+  getAllEmprendimientos():Observable<ListaEmprendimientosI[]>{
+    let direccion = this.url+"emprendimientos"
+    return this.http.get<ListaEmprendimientosI[]>(direccion);
+  }
+
+  getAllCategorias():Observable<ListaCategoriasI[]>{
+    let direccion = this.url+"categorias"
+    return this.http.get<ListaCategoriasI[]>(direccion);
+  }
+
+  getSingleCat(id: any):Observable<ListaCategoriasI>{
+    let direccion= this.url+"categorias/"+id
+    return this.http.get<ListaCategoriasI>(direccion)
   }
 }

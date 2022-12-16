@@ -1,0 +1,18 @@
+<app-header></app-header>
+
+<div class="container">
+    <h3>Emprendimientos</h3>
+
+    <div class="card" style="width: 18rem; display: inline-block; background-color: #ceebd0; margin: 5px;" *ngFor="let emprendimiento of emprendimientos">
+      <div class="card-body" style="margin-left: 10px; margin-right: 10px;">
+        <h5 class="card-title">{{emprendimiento.nombre}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{emprendimiento.descripcion}}</h6>
+        <p class="card-text">{{emprendimiento.categorias}}</p>
+        <p class="card-text">Precio del manguito: {{emprendimiento.precioManguito}}$</p>
+        <a href="#" class="card-link">Donar (no anda)</a>
+      </div>
+    </div>
+
+</div>
+
+<app-footer></app-footer>

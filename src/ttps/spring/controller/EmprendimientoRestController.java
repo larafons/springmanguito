@@ -1,11 +1,13 @@
 package ttps.spring.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,13 +15,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import ttps.spring.model.Donacion;
+import ttps.spring.model.Emprendedor;
 import ttps.spring.model.Emprendimiento;
 import ttps.spring.service.EmprendimientoService;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RequestMapping(value = "/emprendimientos", produces = MediaType.APPLICATION_JSON_VALUE)
 public class EmprendimientoRestController {
 	
@@ -36,7 +41,13 @@ public class EmprendimientoRestController {
 			return new ResponseEntity<Emprendimiento>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Emprendimiento>(emp, HttpStatus.OK);
-		
+	}
+	
+	//obtencion de todos los emprendimientos
+	@GetMapping
+	public ResponseEntity<List<Emprendimiento>> findAll() {
+		List<Emprendimiento> emp = emprendimientoService.recuperarTodos("nombre");
+		return new ResponseEntity<List<Emprendimiento>>(emp, HttpStatus.OK);
 	}
 	
 	//Actualización de datos del emprendimiento

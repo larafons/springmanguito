@@ -1,4 +1,4 @@
 export interface ResponseI {
-    response: string;
+    result: string;
     status: string;
 }

@@ -59,8 +59,9 @@ public class EmprendedorRestController {
 	public ResponseEntity<String> login(@RequestBody Usuario usuario) {
 		Emprendedor emp = this.emprendedorService.recuperarByUser(usuario.getUsuario());
 		if (emp != null && emp.getPasswd().equals(usuario.getPassword())) {
-			return new ResponseEntity<String>("Inicio de sesion correcto :)", HttpStatus.OK);
+			System.out.println("Iniciando sesion "+usuario.getUsuario());
+			return new ResponseEntity<String>("OK", HttpStatus.OK);
 		}
-		return new ResponseEntity<String>("Fallo en inicio de sesion", HttpStatus.UNAUTHORIZED); 
+		return new ResponseEntity<String>("401", HttpStatus.UNAUTHORIZED); 
 	}
 }

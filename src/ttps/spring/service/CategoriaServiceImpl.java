@@ -52,7 +52,7 @@ public class CategoriaServiceImpl implements CategoriaService{
 
 	@Override
 	public Categoria recuperar(Serializable id) {
-		return this.recuperar(id);
+		return this.categoriaDAO.recuperar(id);
 	}
 
 	@Override
