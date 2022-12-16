@@ -6,12 +6,13 @@ import { EditarComponent } from './vistas/editar/editar.component'
 import { NuevoComponent } from './vistas/nuevo/nuevo.component'
 import { EmprendimientosComponent } from './vistas/emprendimientos/emprendimientos.component'
 import { CategoriasComponent } from './vistas/categorias/categorias.component'
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path: "", redirectTo:'login', pathMatch: "full"},
   {path: "login", component: LoginComponent},
   {path: "dashboard", component: DashboardComponent},
-  {path: "editar/:id", component: EditarComponent},
+  {path: "editar/:id", component: EditarComponent, canActivate:[AuthGuard]}, //asi se protege una ruta
   {path: "nuevo", component: NuevoComponent},
   {path: "emprendimientos", component: EmprendimientosComponent},
   {path: "categorias", component: CategoriasComponent}
