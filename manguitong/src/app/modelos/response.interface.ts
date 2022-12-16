@@ -1,4 +1,5 @@
 export interface ResponseI {
-    result: string;
-    status: string;
+    token: string;
+    username: string;
+    exp: number;
 }

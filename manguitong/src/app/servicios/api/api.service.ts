@@ -17,7 +17,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   loginByUser(form: LoginI):Observable<ResponseI> {
-    let direccion = this.url+"emprendedores/login"
+    let direccion = this.url+"auth"
     return this.http.post<ResponseI>(direccion, form);
   }
 

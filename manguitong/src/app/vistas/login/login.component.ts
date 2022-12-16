@@ -20,6 +20,9 @@ export class LoginComponent {
   constructor( private api:ApiService, private router:Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem("token")){
+      this.router.navigate(['dashboard'])
+    }
 
   }
 
@@ -27,13 +30,11 @@ export class LoginComponent {
     this.api.loginByUser(form).subscribe(data => {
       console.log(data)
       let dataResponse:ResponseI = data;
-      if (dataResponse.result == "OK"){
-        //almacena token local storage
-        //lo comento pq no tenemos token todav
-        //localStorage.setItem("token", dataResponse.result.token)
-        //no se por q no entra aca, debe haber problema de respuestas
-        console.log("entra a la respuesta")
+      if (dataResponse){
+        localStorage.setItem("token", dataResponse.token)
         this.router.navigate(['dashboard'])
+      } else {
+        console.log(dataResponse);
       }
     });
   }
