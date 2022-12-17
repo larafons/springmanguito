@@ -55,7 +55,7 @@ public class EmprendedorRestController {
 	 }
 	
 	//Login del sistema
-	@PostMapping(value = "/login", consumes = {"application/json"}) 
+	/*@PostMapping(value = "/login", consumes = {"application/json"}) 
 	public ResponseEntity<String> login(@RequestBody Usuario usuario) {
 		Emprendedor emp = this.emprendedorService.recuperarByUser(usuario.getUsuario());
 		if (emp != null && emp.getPasswd().equals(usuario.getPassword())) {
@@ -63,5 +63,5 @@ public class EmprendedorRestController {
 			return new ResponseEntity<String>("OK", HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("401", HttpStatus.UNAUTHORIZED); 
-	}
+	}*/
 }
