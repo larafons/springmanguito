@@ -27,4 +27,10 @@ export class LoginService {
   getToken(){
     return this.isLogged ? this.getUserLoggedIn().token : null;
   }
+
+  logOut(){
+    localStorage.removeItem('currentUser');
+    this.isUserLoggedIn = false;
+    this.userLogged = null;
+  }
 }
