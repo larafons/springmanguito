@@ -4,6 +4,7 @@ import { ApiService } from '../../servicios/api/api.service'
 import { LoginI } from '../../modelos/login.interface'
 import { ResponseI } from '../../modelos/response.interface'
 import { Router } from '@angular/router'
+import { LoginService } from 'src/app/servicios/login.service';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +18,10 @@ export class LoginComponent {
     password : new FormControl('', Validators.required)
   })
 
-  constructor( private api:ApiService, private router:Router) { }
+  constructor( private api:ApiService, private router:Router, private loginService:LoginService) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem("token")){
+    if (localStorage.getItem("currentuser")){ //aca habria que preguntar por el token que es lo que estaba pero esta dentro de un JSON
       this.router.navigate(['dashboard'])
     }
 
@@ -31,7 +32,8 @@ export class LoginComponent {
       console.log(data)
       let dataResponse:ResponseI = data;
       if (dataResponse){
-        localStorage.setItem("token", dataResponse.token)
+        //localStorage.setItem("token", dataResponse.token)
+        this.loginService.setUserLoggedIn(dataResponse);//cambie la linea de arriba por esta
         this.router.navigate(['dashboard'])
       } else {
         console.log(dataResponse);

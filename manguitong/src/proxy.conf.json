@@ -1,7 +1,0 @@
-{
-    "/**": {
-    "target": "http://localhost:8080/ttps-spring",
-    "secure": false,
-    "logLevel":"debug"
-  }
-}

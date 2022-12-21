@@ -7,9 +7,10 @@ import { HeaderComponent } from './plantillas/header/header.component';
 import { FooterComponent } from './plantillas/footer/footer.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EmprendimientosComponent } from './vistas/emprendimientos/emprendimientos.component';
 import { CategoriasComponent } from './vistas/categorias/categorias.component'
+import { JwtInterceptor } from './jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,11 @@ import { CategoriasComponent } from './vistas/categorias/categorias.component'
     ReactiveFormsModule, 
     FormsModule,
     HttpClientModule
+
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ResponseI } from '../modelos/response.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { ResponseI } from '../modelos/response.interface';
 export class LoginService {
   private isUserLoggedIn;
   public userLogged: ResponseI;
+
 
   constructor() {
     this.isUserLoggedIn = false;
