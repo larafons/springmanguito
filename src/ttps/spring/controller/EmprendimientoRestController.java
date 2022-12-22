@@ -24,7 +24,7 @@ import ttps.spring.model.Emprendimiento;
 import ttps.spring.service.EmprendimientoService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200" ,methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT})
+//@CrossOrigin(origins = "http://localhost:4200" ,methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT})
 @RequestMapping(value = "/emprendimientos", produces = MediaType.APPLICATION_JSON_VALUE)
 public class EmprendimientoRestController {
 	
