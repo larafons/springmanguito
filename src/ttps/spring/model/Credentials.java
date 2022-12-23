@@ -17,10 +17,11 @@ public class Credentials { // Intercambiar nombre de clase con Usuario
 		public Credentials() {
 	    }
 
-	    public Credentials(String token, int exp, String username) {
+	    public Credentials(String token, int exp, String username, boolean admin) { //agregar boolean de admin
 	        this.token = token;
 	        this.exp = exp;
 	        this.username = username;
+	        this.admin = admin;
 	    }
 
 	    public String getToken() {

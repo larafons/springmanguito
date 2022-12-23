@@ -16,6 +16,16 @@ export class LoginService {
   isLogged() {
     return this.isUserLoggedIn;
   }
+  isValidToken(){
+    let token = this.getToken();
+    if (token) {
+      let payload = JSON.parse(atob(token.split(".")[1]));
+      if (payload.exp > new Date().getTime()/1000) {
+        return true;
+      }
+    }
+    return false;
+  }
   setUserLoggedIn(user: ResponseI) {
     this.isUserLoggedIn = true;
     this.userLogged = user;
@@ -32,6 +42,7 @@ export class LoginService {
 
   logOut(){
     localStorage.removeItem('currentUser');
+    //console.log(localStorage.getItem('currentUser'));
     this.isUserLoggedIn = false;
     this.userLogged = null;
   }

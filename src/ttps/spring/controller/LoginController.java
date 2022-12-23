@@ -35,23 +35,26 @@ public class LoginController {
 	 private final int EXPIRATION_IN_SEC = 3600;
 	 
 	 @PostMapping(path = "/auth")
-	    public ResponseEntity<Credentials> authenticate(@RequestBody Usuario usuario) {
+		public ResponseEntity<Credentials> authenticate(@RequestBody Usuario usuario) {
 
-	        if(isLoginSuccess(usuario.getUsuario(),usuario.getPassword())) {
-	            String token = tokenServices.generateToken(usuario.getUsuario(), EXPIRATION_IN_SEC);
-	            return ResponseEntity.ok(new Credentials(token, EXPIRATION_IN_SEC, usuario.getUsuario()));
-	        } else {
-	            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-	        }
-	    }
+			if (isLoginSuccessEmprendedor(usuario.getUsuario(), usuario.getPassword())) { // preguntar por emprendedor
+																							// primero
+				String token = tokenServices.generateToken(usuario.getUsuario(), EXPIRATION_IN_SEC);
 
-		private boolean isLoginSuccess(String username, String password) {
-			Emprendedor e = this.emprendedorDAO.findByUsuario(username);
-			if (e != null) {
-				return (e.getPasswd().equals(password));
+				return ResponseEntity.ok(new Credentials(token, EXPIRATION_IN_SEC, usuario.getUsuario(), false));
+			} else if (isLoginSuccessAdmin(usuario.getUsuario(), usuario.getPassword())) {
+				String token = tokenServices.generateToken(usuario.getUsuario(), EXPIRATION_IN_SEC);
+				return ResponseEntity.ok(new Credentials(token, EXPIRATION_IN_SEC, usuario.getUsuario(), true));
 			}
-			Administrador a = this.administradorDAO.findByUsuario(username);
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+		}
 
+		private boolean isLoginSuccessEmprendedor(String username, String password) { //hacer loginSuccessEmprendedor y loginSuccesAdmin
+			Emprendedor e = this.emprendedorDAO.findByUsuario(username);
+				return (e != null && e.getPasswd().equals(password));
+		}
+		private boolean isLoginSuccessAdmin(String username,String password) {
+			Administrador a = this.administradorDAO.findByUsuario(username);
 			return (a != null && a.getPasswd().equals(password));
 		}
 
