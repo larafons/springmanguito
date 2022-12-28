@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/servicios/login.service';
+
 
 @Component({
   selector: 'app-header',
@@ -8,6 +10,11 @@ import { LoginService } from 'src/app/servicios/login.service';
 })
 export class HeaderComponent {
 
-  constructor(public loginService:LoginService){ }
+  constructor(public loginService:LoginService, private router:Router){ 
+    }
+  
+  redirectLogin(){
+    this.router.navigate(['./login']);
+  }
 
 }

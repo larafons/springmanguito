@@ -5,7 +5,7 @@
   <a class="navbar-brand" *ngIf="loginService.isLogged()">Editar perfil</a>
   <a class="navbar-brand" *ngIf="loginService.isLogged()">Editar emprendimiento</a>
   <a class="navbar-brand" *ngIf="loginService.isLogged()" (click)="loginService.logOut()">Cerrar sesion</a>
-  <a class="navbar-brand" *ngIf="!loginService.isLogged()" >Iniciar sesion</a>
+  <a class="navbar-brand" *ngIf="!loginService.isLogged()" (click)="this.redirectLogin()" >Iniciar sesion</a>
 </nav>
 
 <br><br>
